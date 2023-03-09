@@ -1,0 +1,16 @@
+:root {
+}
+
+.address {
+  letter-spacing: .05em;
+}
+
+.phone-number {
+  letter-spacing: .1em;
+}
+
+.center-helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
