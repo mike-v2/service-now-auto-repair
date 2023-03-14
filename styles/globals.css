@@ -1,16 +1,115 @@
 :root {
+  --bg-primary-color: #DE5804;
 }
 
 .address {
-  letter-spacing: .05em;
+  letter-spacing: .04em;
 }
 
 .phone-number {
-  letter-spacing: .1em;
+  letter-spacing: .07em;
 }
 
 .center-helper {
   display: inline-block;
   height: 100%;
   vertical-align: middle;
+}
+
+.header-1 {
+  background-color: #303030;
+  font-size: .7em;
+  text-align: center;
+}
+
+.navbar {
+  background-image: linear-gradient(to right, #0A0D1A, #282B35);
+}
+
+.navbar .text-col {
+  margin-top: 3%;
+}
+
+.logo img {
+  width: calc(var(--screen-width-factor) * 50px);
+  height: calc(var(--screen-width-factor) * 50px);
+}
+
+.navbar-nav .nav-item {
+  font-size: calc(var(--screen-width-factor) * 1em);
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--bg-primary-color);
+}
+
+.logo {
+  padding-left: 3%;
+}
+
+.logo .text {
+  color: var(--bg-primary-color) !important;
+  font-size: calc(var(--screen-width-factor) * 1.2em);
+}
+
+.logo .text-dave {
+  font-size: calc(var(--screen-width-factor) * .75em);
+}
+
+.splash {
+  position: relative;
+  background: url('/images/storefront.jpg') no-repeat center center;
+  background-size: cover;
+  height: 700px;
+}
+
+.splash-text-top img {
+  width: calc(var(--screen-width-factor) * 80px);
+  height: calc(var(--screen-width-factor) * 80px);
+}
+
+.splash-text-top {
+  position: absolute;
+  top: 0px;
+  left: 2%;
+  padding-left: max(50px, 5%);
+  padding-top: max(50px, 5%);
+  font-size: calc(var(--screen-width-factor) * 3em);
+}
+
+.splash-text-bottom {
+  position: absolute;
+  bottom: 0px;
+  left: 2%;
+  padding-left: max(20px, 2%);
+  padding-bottom: max(20px, 2%);
+  font-size: calc(var(--screen-width-factor) * 3em);
+}
+
+.splash-text-bottom .text {
+  text-decoration: underline;
+  text-decoration-color: var(--bg-primary-color);
+  text-decoration-thickness: 7%;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 768px) {
+  :root {
+    --screen-width-factor: .75;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  :root {
+    --screen-width-factor: 1;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  :root {
+    --screen-width-factor: 1.3;
+  }
 }
