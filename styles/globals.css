@@ -1,5 +1,9 @@
 :root {
   --bg-primary-color: #DE5804;
+  --bg-secondary-color: #0D101D;
+  --bg-secondary-color-gradient: linear-gradient(to right, #0A0D1A, #282B35);
+  --bg-card-blue: #141827;
+  --bg-btn-green: #089B46;
 }
 
 .address {
@@ -23,7 +27,7 @@
 }
 
 .navbar {
-  background-image: linear-gradient(to right, #0A0D1A, #282B35);
+  background-image: var(--bg-secondary-color-gradient);
 }
 
 .navbar .text-col {
@@ -65,8 +69,8 @@
 }
 
 .splash-text-top img {
-  width: calc(var(--screen-width-factor) * 80px);
-  height: calc(var(--screen-width-factor) * 80px);
+  width: calc(var(--screen-width-factor) * 100px);
+  height: calc(var(--screen-width-factor) * 100px);
 }
 
 .splash-text-top {
@@ -75,7 +79,12 @@
   left: 2%;
   padding-left: max(50px, 5%);
   padding-top: max(50px, 5%);
-  font-size: calc(var(--screen-width-factor) * 3em);
+  font-size: calc(var(--screen-width-factor) * 3.2em);
+}
+
+.splash-text-top .text {
+  margin: auto 0;
+  padding-left: 2%;
 }
 
 .splash-text-bottom {
@@ -91,6 +100,51 @@
   text-decoration: underline;
   text-decoration-color: var(--bg-primary-color);
   text-decoration-thickness: 7%;
+}
+
+.buffer {
+  height: 200px;
+  background-image: var(--bg-secondary-color-gradient);
+}
+
+.card-section {
+  background-color: var(--bg-secondary-color);
+}
+
+.card-section .row {
+  width: 85%;
+  max-width: 1100px;
+}
+
+.card-section-header {
+  text-align: center;
+  color: white;
+  font-size: calc(var(--screen-width-factor) * 2em);
+  padding-top: max(20px, 2%);
+  padding-bottom: max(20px, 2%);
+}
+
+.card {
+}
+
+.card-img-top {
+  object-fit: cover;
+}
+
+.card-body {
+  background-color: var(--bg-card-blue);
+}
+
+.card-title {
+  color: var(--bg-primary-color);
+}
+
+.card-text {
+  color: white;
+}
+
+.card-btn {
+  background-color: var(--bg-btn-green) !important;
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

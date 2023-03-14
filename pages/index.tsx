@@ -100,7 +100,7 @@ export default function Home() {
               <div className="col-2 d-flex justify-content-end">
                 <Image src='/images/engine_light_orange.svg' width={150} height={150} alt='engine light icon'/>
               </div>
-              <div className="col-10">
+              <div className="col-10 text">
                 Service Now Auto Repair
               </div>
             </div>
@@ -113,6 +113,45 @@ export default function Home() {
             <span className='text'>Affordable</span><span>. </span>
             <span className='text'>Reliable</span><span>.</span>
           </div>
+        </div>
+
+        <div className="buffer"></div>
+
+        <div className="card-section mx-auto">
+          <p className='card-section-header'>We service any make and model.<br/>There's no project that's too big or too small for us.</p>
+          <div className="row mx-auto">
+            <div className="col-12 col-md-6 col-lg-4">
+              <div className="card">
+                <Image className="card-img-top" src="/images/mechanical.jpg" width={200} height={200} alt="Engine" />
+                <div className="card-body text-center">
+                  <h4 className="card-title">Mechanical Repairs</h4>
+                  <p className="card-text">At Service Now Auto Repair, we're experts in fixing all types of mechanical issues. From engine trouble to transmission problems, our skilled technicians can diagnose and repair any issue quickly and affordably. Trust us to get your car back on the road in top condition.</p>
+                  <a href="#" className="card-btn btn btn-primary">Learn More</a>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 col-md-6 col-lg-4">
+              <div className="card">
+                <Image className="card-img-top" src="/images/mechanical.jpg" width={200} height={200} alt="Title" />
+                <div className="card-body text-center">
+                  <h4 className="card-title">Electrical Repairs</h4>
+                  <p className="card-text">If your car is experiencing electrical problems, don't let it leave you stranded. Our team of experienced technicians can troubleshoot and repair any issue, from faulty wiring to malfunctioning alternators. We use the latest diagnostic tools and techniques to get to the root of the problem and fix it right the first time.</p>
+                  <a href="#" className="card-btn btn btn-primary">Learn More</a>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 col-md-6 col-lg-4">
+              <div className="card">
+                <Image className="card-img-top" src="/images/mechanical.jpg" width={200} height={200} alt="Title" />
+                <div className="card-body text-center">
+                  <h4 className="card-title">Regular Maintenance</h4>
+                  <p className="card-text">Preventative maintenance is the key to keeping your car running smoothly and avoiding costly repairs down the line. At our auto repair shop, we offer a full range of maintenance services, from oil changes to tire rotations to brake inspections. Trust us to keep your car in top condition and catch any potential problems before they become major headaches.</p>
+                  <a href="#" className="card-btn btn btn-primary">Learn More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </main>
     </>
