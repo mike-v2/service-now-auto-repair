@@ -48,6 +48,7 @@ export default function Home() {
 
   useEffect(() => {
     console.log("API key = " + process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY);
+    console.log("node env = " + process.env.NODE_ENV);
 
     fetch(`https://maps.googleapis.com/maps/api/place/details/json
       ?fields=name%2Crating%2Cformatted_phone_number
