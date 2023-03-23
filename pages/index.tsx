@@ -15,13 +15,15 @@ const cardInfo = {
   maintenance: { title: "Regular Maintenance", text: "Preventative maintenance is the key to keeping your car running smoothly and avoiding costly repairs down the line. At our auto repair shop, we offer a full range of maintenance services, from oil changes to tire rotations to brake inspections. Trust us to keep your car in top condition and catch any potential problems before they become major headaches." }
 }
 
-
+const placeID = "ChIJkYbgmm6zlVQRzBHMxuWNU98";
 
 export default function Home() {
   const { publicRuntimeConfig } = getConfig();
   const basePath = publicRuntimeConfig.basePath;
   const bufferRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+
+  console.log("Base path = " + basePath);
 
   const reviewInfo = {
     google: {
@@ -43,6 +45,21 @@ export default function Home() {
       numReviews: 39,
     }
   }
+
+  useEffect(() => {
+    console.log("API key = " + process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY);
+
+    fetch(`https://maps.googleapis.com/maps/api/place/details/json
+      ?fields=name%2Crating%2Cformatted_phone_number
+      &place_id=${placeID}
+      &key=${process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY}`)
+      .then(response => response.json())
+      .then(data => {
+        const { name, rating, user_ratings_total } = data.result;
+        console.log(`${name}: ${rating} (${user_ratings_total} reviews)`);
+      })
+      .catch(error => console.error(error));
+  }, [])
 
   useEffect(() => {
     updateBuffer();
