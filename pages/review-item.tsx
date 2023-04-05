@@ -5,8 +5,8 @@ import getConfig from 'next/config';
 interface ReviewInfo {
   logoPath: string;
   displayName: string;
-  rating: string;
-  numReviews: Number;
+  rating: number;
+  numReviews: number;
 }
 
 export default function ReviewItem ({logoPath, displayName, rating, numReviews}:ReviewInfo) {

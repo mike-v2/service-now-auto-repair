@@ -3,11 +3,12 @@ import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import Image from 'next/image';
-import Icon from '@mdi/react';
-import { mdiPhone, mdiMapMarker } from '@mdi/js';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import getConfig from 'next/config';
 import ReviewItem from './review-item';
+import Map from './map';
+import { Loader } from '@googlemaps/js-api-loader';
+import retrieveYelp from './utils/retrieveYelp';
 
 const cardInfo = {
   mechanical: { title: 'Mechanical Repairs', text: "At Service Now Auto Repair, we're experts in fixing all types of mechanical issues. From engine trouble to transmission problems, our skilled technicians can diagnose and repair any issue quickly and affordably. Trust us to get your car back on the road in top condition." },
@@ -15,13 +16,17 @@ const cardInfo = {
   maintenance: { title: "Regular Maintenance", text: "Preventative maintenance is the key to keeping your car running smoothly and avoiding costly repairs down the line. At our auto repair shop, we offer a full range of maintenance services, from oil changes to tire rotations to brake inspections. Trust us to keep your car in top condition and catch any potential problems before they become major headaches." }
 }
 
-const placeID = "ChIJkYbgmm6zlVQRzBHMxuWNU98";
+interface ReviewData {
+  rating: number,
+  review_count: number
+}
 
 export default function Home() {
   const { publicRuntimeConfig } = getConfig();
   const basePath = publicRuntimeConfig.basePath;
-  const bufferRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
+  const [googleReviewData, setGoogleReviewData] = useState<ReviewData>({rating: 0, review_count: 0});
+  const [yelpReviewData, setYelpReviewData] = useState<ReviewData>({ rating: 0, review_count: 0 });
+  const [facebookeReviewScore, setFacebookReviewScore] = useState<ReviewData>({ rating: 0, review_count: 0 });
 
   console.log("Base path = " + basePath);
 
@@ -29,14 +34,10 @@ export default function Home() {
     google: {
       logoPath: `${basePath}/images/google_logo.svg`,
       displayName: 'Google',
-      rating: '4.8',
-      numReviews: 165,
     },
     yelp: {
       logoPath: `${basePath}/images/yelp_logo.svg`,
       displayName: 'Yelp',
-      rating: '5',
-      numReviews: 56
     },
     facebook: {
       logoPath: `${basePath}/images/facebook_logo.svg`,
@@ -46,31 +47,60 @@ export default function Home() {
     }
   }
 
+  const loader = new Loader({
+    apiKey: process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY as string,
+    version: "weekly",
+    libraries: ["places"]
+  });
+
+  async function getPlaceDetails() {
+    const placeID = "ChIJm-qmpFWulVQRcuV5L0tJ_sY"; // "ChIJkYbgmm6zlVQRzBHMxuWNU98";
+
+    await loader.load();
+    const service = new google.maps.places.PlacesService(document.createElement('div'));
+    const request = {
+      placeId: placeID,
+      fields: ['rating', 'user_ratings_total'],
+    };
+    return new Promise<google.maps.places.PlaceResult>((resolve, reject) => {
+      service.getDetails(request, (place, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          resolve(place as google.maps.places.PlaceResult);
+        } else {
+          reject(status);
+        }
+      });
+    });
+  }
+
   useEffect(() => {
-    console.log("API key = " + process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY);
     console.log("node env = " + process.env.NODE_ENV);
 
-    fetch(`https://maps.googleapis.com/maps/api/place/details/json
-      ?fields=name%2Crating%2Cformatted_phone_number
-      &place_id=${placeID}
-      &key=${process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY}`)
-      .then(response => response.json())
-      .then(data => {
-        const { name, rating, user_ratings_total } = data.result;
-        console.log(`${name}: ${rating} (${user_ratings_total} reviews)`);
-      })
-      .catch(error => console.error(error));
+    const fetchGoogleData = async () => {
+      try {
+        const placeDetails: google.maps.places.PlaceResult = await getPlaceDetails();
+        console.log(placeDetails);
+        setGoogleReviewData({rating: placeDetails.rating as number, review_count: placeDetails.user_ratings_total as number});
+      } catch (error) {
+        console.error('Error fetching place details:', error);
+      }
+    };
+
+    async function fetchYelpScore() {
+      try {
+        const yelpData = await retrieveYelp();
+        setYelpReviewData(yelpData);
+        console.log(yelpData);
+      } catch (error) {
+        console.error('Error fetching Yelp review score:', error);
+      }
+    }
+
+    fetchGoogleData();
+    fetchYelpScore();
   }, [])
 
-  useEffect(() => {
-    updateBuffer();
-  }, [headerRef.current])
-
-  function updateBuffer() {
-    if (headerRef.current && bufferRef.current) {
-      bufferRef.current.style.height = headerRef.current.offsetHeight.toString() + "px";
-    }
-  }
+  
   
   return (
     <>
@@ -81,69 +111,7 @@ export default function Home() {
         <link rel="icon" type="image/png" href={`${basePath}/images/favicon/favicon.png`} />
       </Head>
       <main>
-        <div ref={bufferRef}></div>
-        <div ref={headerRef} className='fixed-top'>
-          <div className="container-fluid m-0 header-1">
-            <div className="row flex-nowrap">
-              <div className='col-auto pe-0'>
-                <span className="center-helper"></span>
-                <Icon path={mdiMapMarker} size={1.5} color='white'/>
-              </div>
-              <div className='address col-auto text-light my-auto fw-bold'>
-                8206 NE 219th St<br />
-                Battle Ground, WA 98604
-              </div>
-              <div className="col-auto pe-0">
-                <span className='center-helper'></span>
-                <Icon path={mdiPhone} size={1.2} color='white'/>
-              </div>
-              <div className="phone-number col-auto my-auto text-light fw-bold">
-                  (360) 882-2817
-              </div>
-            </div>
-          </div>
-         
-          <nav className="navbar navbar-expand-md navbar-dark">
-            <div className="container-fluid">
-              <Link className="logo navbar-brand row flex-nowrap lh-1" href="#">
-                <span className="text text-col col text-end">
-                  SERVICE NOW
-                </span>
-                <span className="col p-0">
-                  <Image src={`${basePath}/images/engine_light_orange.svg`} width={50} height={50} alt='engine light icon' />
-                </span>
-                <span className="text-col col align-self-start">
-                  <div className='text'>AUTO REPAIR</div>
-                  <div className='text-dave text-end text-light '>Dave Freitas</div>
-                </span>
-
-              </Link>
-              
-
-              <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-              </button>
-
-              <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                <ul className="navbar-nav">
-                  <li className="nav-item">
-                    <Link href='#' className="nav-link active fw-bold" aria-current>Home</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link href='#' className='nav-link fw-bold'>Services</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link href='#' className='nav-link fw-bold'>Location</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link href='#' className='nav-link fw-bold'>Contact Us</Link>
-                  </li>
-                </ul>
-              </div>
-              
-            </div>
-          </nav>
-        </div>
+        
         
         <div className='splash'>
           <div className="splash-text-top container-fluid fw-bolder">
@@ -217,12 +185,14 @@ export default function Home() {
                 <h1 className="col-4 display-1 text-center fw-bold my-auto pe-0">15+</h1>
                 <h4 className="col-8 text-center my-auto ps-0">years as a community-trusted small business</h4>
               </div>
-              <ReviewItem logoPath={reviewInfo.google.logoPath} displayName={reviewInfo.google.displayName} rating={reviewInfo.google.rating} numReviews={reviewInfo.google.numReviews} />
-              <ReviewItem logoPath={reviewInfo.yelp.logoPath} displayName={reviewInfo.yelp.displayName} rating={reviewInfo.yelp.rating} numReviews={reviewInfo.yelp.numReviews} />
+              {googleReviewData && <ReviewItem logoPath={reviewInfo.google.logoPath} displayName={reviewInfo.google.displayName} rating={googleReviewData.rating} numReviews={googleReviewData.review_count} />}
+              
+              <ReviewItem logoPath={reviewInfo.yelp.logoPath} displayName={reviewInfo.yelp.displayName} rating={yelpReviewData.rating} numReviews={yelpReviewData.review_count} />
               <ReviewItem logoPath={reviewInfo.facebook.logoPath} displayName={reviewInfo.facebook.displayName} rating={reviewInfo.facebook.rating} numReviews={reviewInfo.facebook.numReviews} />
             </div>
           </div>
         </div>
+
       </main>
     </>
   )
