@@ -1,14 +1,15 @@
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
-import Link from 'next/link'
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import getConfig from 'next/config';
 import ReviewItem from './review-item';
 import Map from './map';
 import { Loader } from '@googlemaps/js-api-loader';
-import retrieveYelp from './utils/retrieveYelp';
+import axios from 'axios';
+import { LoadGoogleMapsAPI } from './utils/loadGoogleMapsAPI';
+import HomeCard from '../components/homeCard';
 
 const cardInfo = {
   mechanical: { title: 'Mechanical Repairs', text: "At Service Now Auto Repair, we're experts in fixing all types of mechanical issues. From engine trouble to transmission problems, our skilled technicians can diagnose and repair any issue quickly and affordably. Trust us to get your car back on the road in top condition." },
@@ -42,21 +43,19 @@ export default function Home() {
     facebook: {
       logoPath: `${basePath}/images/facebook_logo.svg`,
       displayName: 'Facebook',
-      rating: '5',
+      rating: 5,
       numReviews: 39,
     }
   }
 
-  const loader = new Loader({
-    apiKey: process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY as string,
-    version: "weekly",
-    libraries: ["places"]
-  });
+  
 
   async function getPlaceDetails() {
     const placeID = "ChIJm-qmpFWulVQRcuV5L0tJ_sY"; // "ChIJkYbgmm6zlVQRzBHMxuWNU98";
 
-    await loader.load();
+    const google = await LoadGoogleMapsAPI();
+    if (!google) return;
+    
     const service = new google.maps.places.PlacesService(document.createElement('div'));
     const request = {
       placeId: placeID,
@@ -79,6 +78,8 @@ export default function Home() {
     const fetchGoogleData = async () => {
       try {
         const placeDetails: google.maps.places.PlaceResult = await getPlaceDetails();
+        if (!placeDetails) return;
+
         console.log(placeDetails);
         setGoogleReviewData({rating: placeDetails.rating as number, review_count: placeDetails.user_ratings_total as number});
       } catch (error) {
@@ -88,19 +89,18 @@ export default function Home() {
 
     async function fetchYelpScore() {
       try {
-        const yelpData = await retrieveYelp();
-        setYelpReviewData(yelpData);
-        console.log(yelpData);
+        const response = await axios.get('/api/yelp')
+        const relevantData = { rating: response.data.rating, review_count: response.data.review_count }
+        setYelpReviewData(relevantData);
       } catch (error) {
-        console.error('Error fetching Yelp review score:', error);
+        console.error('Error fetching review score:', error);
+        throw error;
       }
     }
 
     fetchGoogleData();
     fetchYelpScore();
   }, [])
-
-  
   
   return (
     <>
@@ -111,8 +111,6 @@ export default function Home() {
         <link rel="icon" type="image/png" href={`${basePath}/images/favicon/favicon.png`} />
       </Head>
       <main>
-        
-        
         <div className='splash'>
           <div className="splash-text-top container-fluid fw-bolder">
             <div className="row">
@@ -123,8 +121,6 @@ export default function Home() {
                 Service Now Auto Repair
               </div>
             </div>
-            
-            
           </div>
           
           <div className="splash-text-bottom">
@@ -140,37 +136,15 @@ export default function Home() {
           <p className='card-section-header'>We service any make and model.<br/>There's no project that's too big or too small for us.</p>
           <div className="row gx-5 mx-auto justify-content-center">
             <div className="col-12 col-md-6 col-lg-4">
-              <div className="card">
-                <Image className="card-img-top" src={`${basePath}/images/mechanical.jpg`} width={200} height={200} alt="Engine" />
-                <div className="card-body text-center">
-                  <h4 className="card-title">{cardInfo.mechanical.title}</h4>
-                  <p className="card-text">{cardInfo.mechanical.text}</p>
-                  <a href="#" className="card-btn btn btn-primary">Learn More</a>
-                </div>
-              </div>
+              <HomeCard imageSrc={`/images/car_repair_mechanical.jpg`} title={cardInfo.mechanical.title} body={cardInfo.mechanical.text} />
             </div>
             <div className="col-12 col-md-6 col-lg-4">
-              <div className="card">
-                <Image className="card-img-top" src={`${basePath}/images/mechanical.jpg`} width={200} height={200} alt="Title" />
-                <div className="card-body text-center">
-                  <h4 className="card-title">{cardInfo.electrical.title}</h4>
-                  <p className="card-text">{cardInfo.electrical.text}</p>
-                  <a href="#" className="card-btn btn btn-primary">Learn More</a>
-                </div>
-              </div>
+              <HomeCard imageSrc={`/images/car_repair_electrical.jpg`} title={cardInfo.electrical.title} body={cardInfo.electrical.text} />
             </div>
             <div className="col-12 col-md-6 col-lg-4">
-              <div className="card">
-                <Image className="card-img-top" src={`${basePath}/images/mechanical.jpg`} width={200} height={200} alt="Title" />
-                <div className="card-body text-center">
-                  <h4 className="card-title">{cardInfo.maintenance.title}</h4>
-                  <p className="card-text">{cardInfo.maintenance.text}</p>
-                  <a href="#" className="card-btn btn btn-primary">Learn More</a>
-                </div>
-              </div>
+              <HomeCard imageSrc={`/images/car_repair_maintenance.jpg`} title={cardInfo.maintenance.title} body={cardInfo.maintenance.text} />
             </div>
           </div>
-          
         </div>
 
         <div className="buffer"></div>

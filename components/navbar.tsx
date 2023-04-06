@@ -24,7 +24,7 @@ const Navbar = () => {
       <div ref={bufferRef}></div>
       <div ref={headerRef} className='fixed-top'>
         <div className="container-fluid m-0 header-1">
-          <div className="row flex-nowrap">
+          <div className="row flex-nowrap justify-content-end">
             <div className='col-auto pe-0'>
               <span className="center-helper"></span>
               <Icon path={mdiMapMarker} size={1.5} color='white' />
@@ -67,13 +67,13 @@ const Navbar = () => {
             <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link href='/' className="nav-link active fw-bold" aria-current>Home</Link>
+                  <Link href='/' className="nav-link fw-bold" aria-current>Home</Link>
                 </li>
                 <li className="nav-item">
                   <Link href='/services' className='nav-link fw-bold'>Services</Link>
                 </li>
                 <li className="nav-item">
-                  <Link href='#' className='nav-link fw-bold'>Location</Link>
+                  <Link href='/location' className='nav-link fw-bold'>Location</Link>
                 </li>
                 <li className="nav-item">
                   <Link href='#' className='nav-link fw-bold'>Contact Us</Link>

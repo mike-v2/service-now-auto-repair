@@ -1,10 +1,14 @@
 import { GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { Loader } from '@googlemaps/js-api-loader';
+import { LoadGoogleMapsAPI } from './utils/loadGoogleMapsAPI';
+
 
 const placeID = "ChIJm-qmpFWulVQRcuV5L0tJ_sY"; // "ChIJkYbgmm6zlVQRzBHMxuWNU98";
 const coords = {lat: 45.78064920283155, long: -122.58918227301481}
 
 export default function Map() {
+  const [googleMapsLoaded, setGoogleMapsLoaded] = useState(false);
   const libraries = useMemo(() => ['places'], []);
 
   const mapCenter = useMemo(
@@ -21,14 +25,13 @@ export default function Map() {
     []
   );
 
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY as string,
-    libraries: libraries as any,
-  });
+  useEffect(() => {
+    LoadGoogleMapsAPI().then(() => {
+      setGoogleMapsLoaded(true);
+    });
+  }, []);
 
-  if (!isLoaded) {
-    return <p>...Loading</p>;
-  }
+  if (!googleMapsLoaded) return <p>...Loading</p>;
 
   return (
     <div>
