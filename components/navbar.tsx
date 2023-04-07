@@ -23,7 +23,7 @@ const Navbar = () => {
     <div>
       <div ref={bufferRef}></div>
       <div ref={headerRef} className='fixed-top'>
-        <div className="container-fluid m-0 header-1">
+        <div className="container-fluid m-0 header-top">
           <div className="row flex-nowrap justify-content-end">
             <div className='col-auto pe-0'>
               <span className="center-helper"></span>
@@ -56,27 +56,22 @@ const Navbar = () => {
                 <div className='text'>AUTO REPAIR</div>
                 <div className='text-dave text-end text-light '>Dave Freitas</div>
               </span>
-
             </Link>
-
 
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
 
             <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-              <ul className="navbar-nav">
-                <li className="nav-item">
+              <ul className="navbar-nav px-3">
+                <li className="nav-item px-2">
                   <Link href='/' className="nav-link fw-bold" aria-current>Home</Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item px-2">
                   <Link href='/services' className='nav-link fw-bold'>Services</Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item px-2">
                   <Link href='/location' className='nav-link fw-bold'>Location</Link>
-                </li>
-                <li className="nav-item">
-                  <Link href='#' className='nav-link fw-bold'>Contact Us</Link>
                 </li>
               </ul>
             </div>

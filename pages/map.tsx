@@ -34,17 +34,17 @@ export default function Map() {
   if (!googleMapsLoaded) return <p>...Loading</p>;
 
   return (
-    <div>
+    <>
       <GoogleMap
         options={mapOptions}
-        zoom={20}
+        zoom={15}
         center={mapCenter}
         mapTypeId={google.maps.MapTypeId.ROADMAP}
-        mapContainerStyle={{ width: '800px', height: '800px' }}
         onLoad={() => console.log('Map Component Loaded...')}
+        mapContainerClassName="w-100 h-100"
       >
         <MarkerF position={mapCenter} onLoad={() => console.log('Marker Loaded')} />
       </GoogleMap>
-    </div>
+    </>
   )
 }

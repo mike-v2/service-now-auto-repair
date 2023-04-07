@@ -1,0 +1,54 @@
+.address {
+  letter-spacing: .04em;
+}
+
+.phone-number {
+  letter-spacing: .07em;
+}
+
+.center-helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.header-top {
+  background-color: #303030;
+  font-size: .7em;
+  text-align: center;
+}
+
+.navbar {
+  background-image: var(--bg-secondary-color-gradient);
+}
+
+.navbar .text-col {
+  margin-top: 3%;
+}
+
+.logo img {
+  width: calc(var(--screen-width-factor) * 50px);
+  height: calc(var(--screen-width-factor) * 50px);
+}
+
+.navbar-nav .nav-item {
+  font-size: calc(var(--screen-width-factor) * 1em);
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--bg-primary-color);
+}
+
+.logo {
+  padding-left: 3%;
+}
+
+.logo .text {
+  color: var(--bg-primary-color) !important;
+  font-size: calc(var(--screen-width-factor) * 1.2em);
+}
+
+.logo .text-dave {
+  font-size: calc(var(--screen-width-factor) * .75em);
+}

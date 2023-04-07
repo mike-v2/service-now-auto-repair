@@ -14,7 +14,7 @@ export default function ReviewItem ({logoPath, displayName, rating, numReviews}:
   const basePath = publicRuntimeConfig.basePath;
 
   return (
-    <div className="row review-item px-2 justify-content-end">
+    <div className="row review-item px-2 my-auto justify-content-end">
       <div className="col my-auto p-0">
         <Image src={logoPath} width={130} height={40} alt={`${displayName} logo`} className='d-block mx-auto' />
       </div>

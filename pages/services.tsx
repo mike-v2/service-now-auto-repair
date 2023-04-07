@@ -1,5 +1,5 @@
+import Head from "next/head"
 import ServicesCard from "../components/servicesCard"
-import styles from '../styles/services.module.css'
 
 const cardInfo = {
   mechanical: {
@@ -66,42 +66,47 @@ const cardInfo = {
 export default function Services() {
 
   return (
-    <div>
-      <div className={styles.body}>
-        <h1 className="p-5 text-center text-light">
-          Repairs and Services
-        </h1>
-        <p className="text-center text-light p-3 fs-5">At Service Now Auto Repair, we pride ourselves on providing comprehensive automotive repair solutions for our valued customers. Our experienced technicians are equipped to handle a wide range of mechanical and electrical issues, ensuring your vehicle is in top condition. We offer competitive pricing and expert advice for all your automotive needs in the Vancouver area. Here are some of the common issues we diagnose and resolve. If you don't see your issue listed, don't hesitate to give us a call — we're here to help.</p>
+    <>
+      <Head>
+        <title>Repairs and Services</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <main>
+        <div>
+          <h1 className="p-5 text-center text-light">
+            Repairs and Services
+          </h1>
+          <p className="text-center text-light p-3 fs-5">At Service Now Auto Repair, we pride ourselves on providing comprehensive automotive repair solutions for our valued customers. Our experienced technicians are equipped to handle a wide range of mechanical and electrical issues, ensuring your vehicle is in top condition. We offer competitive pricing and expert advice for all your automotive needs in the Vancouver area. Here are some of the common issues we diagnose and resolve. If you don't see your issue listed, don't hesitate to give us a call — we're here to help.</p>
 
-        <div className="card-section">
-          <div className="row mx-auto">
-            <div className="col-12 col-md-6">
-              <ServicesCard imageSrc={`/images/car_repair_mechanical.jpg`} title={cardInfo.mechanical.title} body={cardInfo.mechanical.body} />
+          <section className="card-section">
+            <div className="row mx-auto">
+              <div className="col-12 col-md-6">
+                <ServicesCard imageSrc={`/images/car_repair_mechanical.jpg`} title={cardInfo.mechanical.title} body={cardInfo.mechanical.body} />
+              </div>
+              <div className="col-12 col-md-6">
+                <ServicesCard imageSrc={`/images/car_repair_electrical.jpg`} title={cardInfo.electrical.title} body={cardInfo.electrical.body} />
+              </div>
+              <div className="col-12 col-md-6">
+                <ServicesCard imageSrc={`/images/car_repair_clutch.jpg`} title={cardInfo.clutch.title} body={cardInfo.clutch.body} />
+              </div>
+              <div className="col-12 col-md-6">
+                <ServicesCard imageSrc={`/images/car_repair_engine.jpg`} title={cardInfo.engine.title} body={cardInfo.engine.body} />
+              </div>
+              <div className="col-12 col-md-6">
+                <ServicesCard imageSrc={`/images/car_repair_brake.jpg`} title={cardInfo.brake.title} body={cardInfo.brake.body} />
+              </div>
+              <div className="col-12 col-md-6">
+                <ServicesCard imageSrc={`/images/car_repair_maintenance.jpg`} title={cardInfo.maintenance.title} body={cardInfo.maintenance.body} />
+              </div>
             </div>
-            <div className="col-12 col-md-6">
-              <ServicesCard imageSrc={`/images/car_repair_electrical.jpg`} title={cardInfo.electrical.title} body={cardInfo.electrical.body} />
-            </div>
-            <div className="col-12 col-md-6">
-              <ServicesCard imageSrc={`/images/car_repair_clutch.jpg`} title={cardInfo.clutch.title} body={cardInfo.clutch.body} />
-            </div>
-            <div className="col-12 col-md-6">
-              <ServicesCard imageSrc={`/images/car_repair_engine.jpg`} title={cardInfo.engine.title} body={cardInfo.engine.body} />
-            </div>
-            <div className="col-12 col-md-6">
-              <ServicesCard imageSrc={`/images/car_repair_brake.jpg`} title={cardInfo.brake.title} body={cardInfo.brake.body} />
-            </div>
-            <div className="col-12 col-md-6">
-              <ServicesCard imageSrc={`/images/car_repair_maintenance.jpg`} title={cardInfo.maintenance.title} body={cardInfo.maintenance.body} />
-            </div>
-          </div>
+          </section>
+
+
+          <p className="text-light text-center p-5 fs-5">
+            We use only the highest quality parts and equipment for our repairs and services, and our technicians are trained and certified to handle any issue you may have. Don't hesitate to give us a call or stop by our shop to see how we can help you get back on the road safely and confidently.
+          </p>
         </div>
-        
-
-        <p className="text-light text-center p-5 fs-5">
-          We use only the highest quality parts and equipment for our repairs and services, and our technicians are trained and certified to handle any issue you may have. Don't hesitate to give us a call or stop by our shop to see how we can help you get back on the road safely and confidently.
-        </p>
-      </div>
-    </div>
-    
+      </main>
+    </>
   )
 }

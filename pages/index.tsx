@@ -1,12 +1,9 @@
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import getConfig from 'next/config';
 import ReviewItem from './review-item';
-import Map from './map';
-import { Loader } from '@googlemaps/js-api-loader';
 import axios from 'axios';
 import { LoadGoogleMapsAPI } from './utils/loadGoogleMapsAPI';
 import HomeCard from '../components/homeCard';
@@ -48,10 +45,8 @@ export default function Home() {
     }
   }
 
-  
-
   async function getPlaceDetails() {
-    const placeID = "ChIJm-qmpFWulVQRcuV5L0tJ_sY"; // "ChIJkYbgmm6zlVQRzBHMxuWNU98";
+    const placeID = "ChIJm-qmpFWulVQRcuV5L0tJ_sY";
 
     const google = await LoadGoogleMapsAPI();
     if (!google) return;
@@ -77,7 +72,7 @@ export default function Home() {
 
     const fetchGoogleData = async () => {
       try {
-        const placeDetails: google.maps.places.PlaceResult = await getPlaceDetails();
+        const placeDetails = await getPlaceDetails();
         if (!placeDetails) return;
 
         console.log(placeDetails);
@@ -111,7 +106,7 @@ export default function Home() {
         <link rel="icon" type="image/png" href={`${basePath}/images/favicon/favicon.png`} />
       </Head>
       <main>
-        <div className='splash'>
+        <section className='splash-section'>
           <div className="splash-text-top container-fluid fw-bolder">
             <div className="row">
               <div className="col-2 d-flex justify-content-end">
@@ -128,13 +123,13 @@ export default function Home() {
             <span className='text'>Affordable</span><span>. </span>
             <span className='text'>Reliable</span><span>.</span>
           </div>
-        </div>
+        </section>
 
         <div className="buffer"></div>
 
-        <div className="card-section mx-auto pb-5">
+        <section className="card-section mx-auto pb-5">
           <p className='card-section-header'>We service any make and model.<br/>There's no project that's too big or too small for us.</p>
-          <div className="row gx-5 mx-auto justify-content-center">
+          <div className="row g-5 mx-auto justify-content-center">
             <div className="col-12 col-md-6 col-lg-4">
               <HomeCard imageSrc={`/images/car_repair_mechanical.jpg`} title={cardInfo.mechanical.title} body={cardInfo.mechanical.text} />
             </div>
@@ -145,19 +140,19 @@ export default function Home() {
               <HomeCard imageSrc={`/images/car_repair_maintenance.jpg`} title={cardInfo.maintenance.title} body={cardInfo.maintenance.text} />
             </div>
           </div>
-        </div>
+        </section>
 
         <div className="buffer"></div>
         
-        <div className="review-section py-5 container-fluid">
+        <section className="review-section py-5 container-fluid">
           <div className="row">
-            <div className="col-12 col-lg-6 review-image-parent">
+            <div className="review-image-parent col-12 col-lg-6">
               <Image className='review-image' src={`${basePath}/images/service_now_1.jpg`} fill alt="mechanic in an ice cream truck" />
             </div>
-            <div className="col-12 col-lg-6 review-item-parent">
+            <div className="review-item-parent col-12 col-lg-6 text-light">
               <div className="row review-title">
-                <h1 className="col-4 display-1 text-center fw-bold my-auto pe-0">15+</h1>
-                <h4 className="col-8 text-center my-auto ps-0">years as a community-trusted small business</h4>
+                <h1 className="highlighted-text col-6 display-1 text-center fw-bold my-auto text-decoration-underline"><em>15+ years</em></h1>
+                <h4 className="col-6 text-center my-auto">as a community-trusted small business</h4>
               </div>
               {googleReviewData && <ReviewItem logoPath={reviewInfo.google.logoPath} displayName={reviewInfo.google.displayName} rating={googleReviewData.rating} numReviews={googleReviewData.review_count} />}
               
@@ -165,8 +160,18 @@ export default function Home() {
               <ReviewItem logoPath={reviewInfo.facebook.logoPath} displayName={reviewInfo.facebook.displayName} rating={reviewInfo.facebook.rating} numReviews={reviewInfo.facebook.numReviews} />
             </div>
           </div>
-        </div>
+        </section>
 
+        <section className='quote-section w-75 mx-auto p-5'>
+          <figure>
+            <blockquote className="blockquote text-light text-center">
+              <p>Dave is the very best! We took our Honda Fit in to have the air conditioner fixed in preparation for a road trip. Dave not only worked on the air conditioner but, hearing that we had a trip coming up, took care to check the pressure of the spare tire, make sure that we had a tire iron and jack with it, clean the headlights, and more. He provided excellent and very careful service at an excellent price, as always!</p>
+            </blockquote>
+            <figcaption className="blockquote-footer text-light py-4 text-end me-5">
+              Mary Wasnock
+            </figcaption>
+          </figure>
+        </section>
       </main>
     </>
   )
