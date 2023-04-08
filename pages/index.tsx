@@ -30,15 +30,15 @@ export default function Home() {
 
   const reviewInfo = {
     google: {
-      logoPath: `${basePath}/images/google_logo.svg`,
+      logoPath: `${basePath}/images/google_logo_large.svg`,
       displayName: 'Google',
     },
     yelp: {
-      logoPath: `${basePath}/images/yelp_logo.svg`,
+      logoPath: `${basePath}/images/yelp_logo_large.svg`,
       displayName: 'Yelp',
     },
     facebook: {
-      logoPath: `${basePath}/images/facebook_logo.svg`,
+      logoPath: `${basePath}/images/facebook_logo_large.svg`,
       displayName: 'Facebook',
       rating: 5,
       numReviews: 39,
@@ -85,6 +85,7 @@ export default function Home() {
     async function fetchYelpScore() {
       try {
         const response = await axios.get('/api/yelp')
+        console.log(response.data);
         const relevantData = { rating: response.data.rating, review_count: response.data.review_count }
         setYelpReviewData(relevantData);
       } catch (error) {
@@ -144,7 +145,7 @@ export default function Home() {
 
         <div className="buffer"></div>
         
-        <section className="review-section py-5 container-fluid">
+        <section className="review-sectioncontainer-fluid">
           <div className="row">
             <div className="review-image-parent col-12 col-lg-6">
               <Image className='review-image' src={`${basePath}/images/service_now_1.jpg`} fill alt="mechanic in an ice cream truck" />
@@ -162,16 +163,23 @@ export default function Home() {
           </div>
         </section>
 
-        <section className='quote-section w-75 mx-auto p-5'>
-          <figure>
-            <blockquote className="blockquote text-light text-center">
-              <p>Dave is the very best! We took our Honda Fit in to have the air conditioner fixed in preparation for a road trip. Dave not only worked on the air conditioner but, hearing that we had a trip coming up, took care to check the pressure of the spare tire, make sure that we had a tire iron and jack with it, clean the headlights, and more. He provided excellent and very careful service at an excellent price, as always!</p>
-            </blockquote>
-            <figcaption className="blockquote-footer text-light py-4 text-end me-5">
-              Mary Wasnock
-            </figcaption>
-          </figure>
+        <div className="buffer"></div>
+
+        <section className='quote-section w-75 mx-auto'>
+          <div className="p-4">
+            <figure className='p-5 m-0'>
+              <blockquote className="blockquote text-light">
+                <p>Dave is the very best! We took our Honda Fit in to have the air conditioner fixed in preparation for a road trip. Dave not only worked on the air conditioner but, hearing that we had a trip coming up, took care to check the pressure of the spare tire, make sure that we had a tire iron and jack with it, clean the headlights, and more. He provided excellent and very careful service at an excellent price, as always!</p>
+              </blockquote>
+              <figcaption className="blockquote-footer text-light pt-4 text-end me-5 mb-0">
+                Mary Wasnock
+              </figcaption>
+            </figure>
+          </div>
         </section>
+
+        <div className="buffer"></div>
+
       </main>
     </>
   )

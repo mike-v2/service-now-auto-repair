@@ -1,0 +1,45 @@
+.footer {
+  height: 250px;
+  background-color: bisque;
+}
+
+.footer .top-row {
+  max-width: 1200px;
+  padding-left: min(50px, 5%);
+  padding-right: min(50px, 5%);
+  padding-top: min(50px, 5%);
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer-text-title {
+  font-size: calc(var(--screen-width-factor) * 1.5em);
+}
+
+.footer-text-body {
+  font-size: calc(var(--screen-width-factor) * 1em);
+}
+
+.footer .image-icon {
+  width: calc(var(--screen-width-factor) * 50px);
+  height: calc(var(--screen-width-factor) * 50px);
+}
+
+.footer .corp-logo {
+  width: calc(var(--screen-width-factor) * 40px);
+  height: calc(var(--screen-width-factor) * 40px);
+
+  /* IE6-9 */
+  filter: gray;
+  /* Google Chrome, Safari 6+ & Opera 15+ */
+  -webkit-filter: grayscale(1);
+  /* Microsoft Edge and Firefox 35+ */
+  filter: grayscale(1);
+}
+
+.footer .corp-logo:hover {
+  -webkit-filter: grayscale(0);
+  filter: none;
+}

@@ -14,8 +14,11 @@
 
 .header-top {
   background-color: #303030;
-  font-size: .7em;
   text-align: center;
+}
+
+.header-top a {
+  text-decoration: none;
 }
 
 .navbar {
@@ -32,7 +35,7 @@
 }
 
 .navbar-nav .nav-item {
-  font-size: calc(var(--screen-width-factor) * 1em);
+  font-size: calc(var(--screen-width-factor) * 1.3em);
 }
 
 .nav-link:hover {
@@ -46,9 +49,9 @@
 
 .logo .text {
   color: var(--bg-primary-color) !important;
-  font-size: calc(var(--screen-width-factor) * 1.2em);
+  font-size: calc(var(--screen-width-factor) * 1.3em);
 }
 
 .logo .text-dave {
-  font-size: calc(var(--screen-width-factor) * .75em);
+  font-size: calc(var(--screen-width-factor) * .9em);
 }
