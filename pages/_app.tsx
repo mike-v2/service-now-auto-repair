@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import '../styles/navbar.css'
 import '../styles/home.css'
+import '../styles/services.css'
 import '../styles/location.css'
 import '../styles/footer.css'
 import 'bootstrap/dist/css/bootstrap.css';

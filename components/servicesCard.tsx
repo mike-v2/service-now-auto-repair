@@ -9,8 +9,8 @@ interface ServicesCardProps {
 export default function ServicesCard({ imageSrc, title, body}: ServicesCardProps) {
 
   return (
-    <div>
-      <div className="card mb-3">
+    <div className="services-card">
+      <div className="card mb-3 mx-auto">
         <div className="row bg-card-blue mx-auto w-100">
           <div className="col-5 col-md-12 p-0">
             <Image src={imageSrc} width={200} height={200} className="card-img-top" alt={`image of ${title}`} />

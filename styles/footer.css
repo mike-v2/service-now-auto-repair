@@ -1,6 +1,6 @@
 .footer {
-  height: 250px;
-  background-color: bisque;
+  height: 300px;
+  background-color: black;
 }
 
 .footer .top-row {
@@ -16,20 +16,25 @@
 
 .footer-text-title {
   font-size: calc(var(--screen-width-factor) * 1.5em);
+  z-index: 2;
 }
 
 .footer-text-body {
   font-size: calc(var(--screen-width-factor) * 1em);
+  z-index: 2;
 }
 
 .footer .image-icon {
-  width: calc(var(--screen-width-factor) * 50px);
-  height: calc(var(--screen-width-factor) * 50px);
+  width: calc(var(--screen-width-factor) * 45px);
+  height: calc(var(--screen-width-factor) * 45px);
+  filter: invert(1);
 }
 
 .footer .corp-logo {
-  width: calc(var(--screen-width-factor) * 40px);
-  height: calc(var(--screen-width-factor) * 40px);
+  width: calc(var(--screen-width-factor) * 30px);
+  height: calc(var(--screen-width-factor) * 30px);
+  position: relative;
+  z-index: 2;
 
   /* IE6-9 */
   filter: gray;
@@ -42,4 +47,10 @@
 .footer .corp-logo:hover {
   -webkit-filter: grayscale(0);
   filter: none;
+}
+
+.footer .background-image {
+  z-index: 1;
+  object-fit: contain;
+  filter: opacity(.17);
 }

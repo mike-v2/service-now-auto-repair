@@ -32,14 +32,17 @@ export default function Home() {
     google: {
       logoPath: `${basePath}/images/google_logo_large.svg`,
       displayName: 'Google',
+      url: 'https://www.google.com/search?&q=service+now+auto+repair+battle+ground+wa#lrd=0x5495ae55a4a6ea9b:0xc6fe494b2f79e572,1,,,,',
     },
     yelp: {
       logoPath: `${basePath}/images/yelp_logo_large.svg`,
       displayName: 'Yelp',
+      url: 'https://www.yelp.com/biz/service-now-auto-repair-battleground',
     },
     facebook: {
       logoPath: `${basePath}/images/facebook_logo_large.svg`,
       displayName: 'Facebook',
+      url: 'https://www.facebook.com/ServiceNowAutoRepair/reviews',
       rating: 5,
       numReviews: 39,
     }
@@ -106,7 +109,7 @@ export default function Home() {
         <link rel="icon" href={`${basePath}/images/favicon/favicon.svg`} />
         <link rel="icon" type="image/png" href={`${basePath}/images/favicon/favicon.png`} />
       </Head>
-      <main>
+      <main className='home'>
         <section className='splash-section'>
           <div className="splash-text-top container-fluid fw-bolder">
             <div className="row">
@@ -128,8 +131,10 @@ export default function Home() {
 
         <div className="buffer"></div>
 
-        <section className="card-section mx-auto pb-5">
-          <p className='card-section-header'>We service any make and model.<br/>There's no project that's too big or too small for us.</p>
+        <div className="slide-in-left slide-body ms-auto w-100"></div>
+
+        <section className="card-section mx-auto">
+          <p className='card-section-header text-light'>We service any make and model.<br/>There's no project that's too big or too small for us.</p>
           <div className="row g-5 mx-auto justify-content-center">
             <div className="col-12 col-md-6 col-lg-4">
               <HomeCard imageSrc={`/images/car_repair_mechanical.jpg`} title={cardInfo.mechanical.title} body={cardInfo.mechanical.text} />
@@ -143,7 +148,6 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="buffer"></div>
         
         <section className="review-sectioncontainer-fluid">
           <div className="row">
@@ -155,17 +159,16 @@ export default function Home() {
                 <h1 className="highlighted-text col-6 display-1 text-center fw-bold my-auto text-decoration-underline"><em>15+ years</em></h1>
                 <h4 className="col-6 text-center my-auto">as a community-trusted small business</h4>
               </div>
-              {googleReviewData && <ReviewItem logoPath={reviewInfo.google.logoPath} displayName={reviewInfo.google.displayName} rating={googleReviewData.rating} numReviews={googleReviewData.review_count} />}
+              {<ReviewItem logoPath={reviewInfo.google.logoPath} displayName={reviewInfo.google.displayName} url={reviewInfo.google.url} rating={googleReviewData.rating} numReviews={googleReviewData.review_count} />}
               
-              <ReviewItem logoPath={reviewInfo.yelp.logoPath} displayName={reviewInfo.yelp.displayName} rating={yelpReviewData.rating} numReviews={yelpReviewData.review_count} />
-              <ReviewItem logoPath={reviewInfo.facebook.logoPath} displayName={reviewInfo.facebook.displayName} rating={reviewInfo.facebook.rating} numReviews={reviewInfo.facebook.numReviews} />
+              <ReviewItem logoPath={reviewInfo.yelp.logoPath} displayName={reviewInfo.yelp.displayName} url={reviewInfo.yelp.url} rating={yelpReviewData.rating} numReviews={yelpReviewData.review_count} />
+              <ReviewItem logoPath={reviewInfo.facebook.logoPath} displayName={reviewInfo.facebook.displayName} url={reviewInfo.facebook.url} rating={reviewInfo.facebook.rating} numReviews={reviewInfo.facebook.numReviews} />
             </div>
           </div>
         </section>
 
-        <div className="buffer"></div>
 
-        <section className='quote-section w-75 mx-auto'>
+        <section className='quote-section w-75 mx-auto mt-5'>
           <div className="p-4">
             <figure className='p-5 m-0'>
               <blockquote className="blockquote text-light">

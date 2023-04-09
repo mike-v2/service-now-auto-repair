@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React, { useRef, useEffect } from 'react';
-import Icon from '@mdi/react';
-import { mdiPhone, mdiMapMarker } from '@mdi/js';
 
 const phoneNumber = "(360) 882-2817";
 
@@ -31,7 +29,7 @@ const Navbar = () => {
             <Link className="col-auto d-flex pe-4" href="/location">
               <div className='pe-2'>
                 <span className="center-helper"></span>
-                <Icon path={mdiMapMarker} size={1.5} color='white' />
+                <Image src='/images/location_icon.svg' className='icon-image' width={30} height={30} alt="location icon" />
               </div>
               <div className='address col-auto text-light my-auto fw-bold fs-6'>
                 8206 NE 219th St<br />
@@ -42,7 +40,7 @@ const Navbar = () => {
             <a href={`tel:${phoneNumber}`} className="col-auto d-flex ps-4">
               <div className="pe-2">
                 <span className='center-helper'></span>
-                <Icon path={mdiPhone} size={1.5} color='white' />
+                <Image src='/images/phone_icon.svg' className='icon-image' width={30} height={30} alt="phone icon" />
               </div>
               <div className="phone-number col-auto my-auto text-light fw-bold">
                 {phoneNumber}
@@ -86,6 +84,8 @@ const Navbar = () => {
             </div>
           </div>
         </nav>
+
+        <div className="slide-in-left slide-body-navbar "></div>
       </div>
     </div>
   );
