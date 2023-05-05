@@ -6,7 +6,7 @@ const businessID = "service-now-auto-repair-battleground";
 const yelpAxios = axios.create({
   baseURL: 'https://api.yelp.com/v3',
   headers: {
-    Authorization: `Bearer ${process.env.NEXT_PUBLIC_YELP_API_KEY}`,
+    Authorization: `Bearer ${process.env.YELP_API_KEY}`,
   },
 });
 

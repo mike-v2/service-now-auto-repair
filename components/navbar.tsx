@@ -71,13 +71,13 @@ const Navbar = () => {
 
             <div className="collapse navbar-collapse justify-content-end pt-3" id="navbarSupportedContent">
               <ul className="navbar-nav px-3 ">
-                <li className="nav-item px-0 px-lg-2">
+                <li className="nav-item px-1 px-lg-2">
                   <Link href='/' className="nav-link fw-bold" aria-current>Home</Link>
                 </li>
-                <li className="nav-item px-0 px-lg-2">
+                <li className="nav-item px-1 px-lg-2">
                   <Link href='/services' className='nav-link fw-bold'>Services</Link>
                 </li>
-                <li className="nav-item px-0 px-lg-2">
+                <li className="nav-item px-1 px-lg-2">
                   <Link href='/location' className='nav-link fw-bold'>Location</Link>
                 </li>
               </ul>

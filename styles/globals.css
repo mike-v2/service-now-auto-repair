@@ -10,6 +10,21 @@ main {
   background-image: var(--bg-secondary-color-gradient);
 }
 
+.slide-in-left {
+  -webkit-animation: slide-in-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-in-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  background-image: linear-gradient(to right, #0A0D1A, var(--bg-primary-color));
+}
+
+.slide-body {
+  height: 5px;
+}
+
+.buffer {
+  height: 100px;
+  background-image: var(--bg-secondary-color-gradient);
+}
+
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (max-width: 768px) {
   :root {

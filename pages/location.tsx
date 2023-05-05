@@ -10,18 +10,20 @@ export default function Location() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main className="location">
-        <div >
-          <div className="splash position-relative">
-            <Image src='images/mechanic_car_dark.jpg' fill alt='mechanic working on a car' />
+        <div className="row">
+          <div className="col-12 col-lg-3">
+            <div className="text-white text-center fs-1 px-3 pt-5">
+              Location
+            </div>
+            <div className="text-white text-center px-3 pb-3">
+              8206 NE 219th St, Battle Ground, WA 98604
+            </div>
           </div>
 
-          <div className="buffer"></div>
-
-          <div className="map-container w-75 mx-auto">
+          <div className="col-12 col-lg-9 map-container w-75 mx-auto">
             <Map />
           </div>
         </div>
-        
         <div className="buffer"></div>
       </main>
     </>

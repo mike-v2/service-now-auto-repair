@@ -1,6 +1,5 @@
-import { GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api';
+import { GoogleMap, MarkerF } from '@react-google-maps/api';
 import { useEffect, useMemo, useState } from 'react';
-import { Loader } from '@googlemaps/js-api-loader';
 import { LoadGoogleMapsAPI } from './utils/loadGoogleMapsAPI';
 
 
@@ -21,6 +20,10 @@ export default function Map() {
       disableDefaultUI: true,
       clickableIcons: true,
       scrollwheel: true,
+      streetViewControl: true,
+      fullscreenControl: true,
+      mapTypeControl: true,
+      zoomControl: true,
     }),
     []
   );

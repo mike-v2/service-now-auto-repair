@@ -51,7 +51,7 @@ export default function Footer() {
               <div className="col-3">
                 <Image src='/images/clock_icon.svg' className="image-icon d-block mx-auto" height={50} width={50} alt="clock icon" />
               </div>
-              <div className="col-9 fw-bold footer-text-title text-light my-auto">Opening Hours</div>
+              <div className="col-9 fw-bold footer-text-title text-light my-auto">Hours</div>
             </div>
             <div className="row">
               <div className="col-3"></div>

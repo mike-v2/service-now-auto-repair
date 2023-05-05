@@ -39,11 +39,6 @@
   text-decoration-thickness: 7%;
 }
 
-.buffer {
-  height: 150px;
-  background-image: var(--bg-secondary-color-gradient);
-}
-
 .home .card-section {
   background-color: var(--bg-secondary-color);
   padding-bottom: 10rem;
@@ -110,7 +105,7 @@
   white-space: nowrap;
 }
 
-.quote-section {
+.figure-container {
   max-width: 700px;
   background-color: var(--bg-secondary-color);
 }
@@ -125,14 +120,4 @@
 
 .highlighted-text {
   color: var(--bg-primary-color);
-}
-
-.slide-in-left {
-  -webkit-animation: slide-in-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: slide-in-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  background-image: linear-gradient(to right, #0A0D1A, var(--bg-primary-color));
-}
-
-.slide-body {
-  height: 5px;
 }
