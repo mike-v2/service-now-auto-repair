@@ -129,18 +129,20 @@ export default function Home() {
         <link rel="icon" type="image/png" href={`/images/favicon/favicon.png`} />
       </Head>
       <main className='home'>
-        <section className='splash-section'>
-          <div className="splash-text-top container-fluid fw-bolder">
+        <section className='splash-section '>
+          <div className='dave-image-container position-relative h-100 ms-auto my-auto'>
+            <Image src='/images/dave.png' className='dave-image' fill alt='dave' />
+          </div>
+          <div className="splash-text-top container-fluid fw-bold">
             <div className="row">
-              <div className="col-2 d-flex justify-content-end">
-                <Image src={`/images/engine_light_orange.svg`} width={150} height={150} alt='engine light icon'/>
+              <div className="col-2 d-flex justify-content-end p-0">
+                <Image src='/images/engine_light_orange.svg' width={150} height={150} alt='engine light icon'/>
               </div>
               <div className="col-10 text">
                 Service Now Auto Repair
               </div>
             </div>
           </div>
-          
           <div className="splash-text-bottom">
             <span className='text'>Quick</span><span>. </span>
             <span className='text'>Affordable</span><span>. </span>
@@ -216,10 +218,13 @@ export default function Home() {
         <div className="buffer"></div>
 
         <section className='quote-section '>
-          <div className="figure-container p-4 w-75 mx-auto">
-            <figure className='p-5 m-0'>
+          <div className="figure-container p-3 w-75 mx-auto">
+            <figure className='p-3 m-0'>
               <blockquote className="blockquote text-light">
-                <p>Dave is the very best! We took our Honda Fit in to have the air conditioner fixed in preparation for a road trip. Dave not only worked on the air conditioner but, hearing that we had a trip coming up, took care to check the pressure of the spare tire, make sure that we had a tire iron and jack with it, clean the headlights, and more. He provided excellent and very careful service at an excellent price, as always!</p>
+                <div className='position-relative'>
+                  <span className='quote-symbol position-absolute'>❝</span>
+                </div>
+                <p className='fs-6 pt-2'>Dave is the very best! We took our Honda Fit in to have the air conditioner fixed in preparation for a road trip. Dave not only worked on the air conditioner but, hearing that we had a trip coming up, took care to check the pressure of the spare tire, make sure that we had a tire iron and jack with it, clean the headlights, and more. He provided excellent and very careful service at an excellent price, as always!</p>
               </blockquote>
               <figcaption className="blockquote-footer text-light pt-4 text-end me-5 mb-0">
                 Mary Wasnock

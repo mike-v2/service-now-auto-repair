@@ -5,6 +5,15 @@
   height: 700px;
 }
 
+.dave-image-container {
+  width: calc(var(--screen-width-factor) * 500px);
+  height: calc(var(--screen-width-factor) * 500px);
+}
+
+.dave-image {
+  object-fit: contain;
+}
+
 .splash-text-top img {
   width: calc(var(--screen-width-factor) * 100px);
   height: calc(var(--screen-width-factor) * 100px);
@@ -14,9 +23,15 @@
   position: absolute;
   top: 0px;
   left: 2%;
+  width: fit-content;
   padding-left: max(50px, 5%);
   padding-top: max(50px, 5%);
   font-size: calc(var(--screen-width-factor) * 3.1em);
+  font-weight: 200;
+  color: black;
+  -webkit-text-fill-color: black; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: white;
 }
 
 .splash-text-top .text {
@@ -30,7 +45,7 @@
   left: 2%;
   padding-left: max(20px, 2%);
   padding-bottom: max(20px, 2%);
-  font-size: calc(var(--screen-width-factor) * 3em);
+  font-size: calc(var(--screen-width-factor) * 2.7em);
 }
 
 .splash-text-bottom .text {
@@ -112,6 +127,13 @@
 
 .quote-section figure {
   border: 1px solid var(--bg-primary-color)
+}
+
+.quote-symbol {
+  font-size: 150px;
+  line-height: 0.6em;
+  opacity: 0.3;
+  top: -3.2rem;
 }
 
 .border-primary-color {

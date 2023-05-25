@@ -25,14 +25,22 @@ main {
   background-image: var(--bg-secondary-color-gradient);
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (max-width: 768px) {
+/* Extra small devices (phones) */
+@media only screen and (max-width: 500px) {
+  :root {
+    --screen-width-factor: .6;
+  }
+
+}
+
+/* Small devices (portrait tablets and large phones, 500px and up) */
+@media only screen and (min-width: 500px) {
   :root {
     --screen-width-factor: .75;
   }
-
-  .card-img-top {
-    height: 100%;
+  
+  .services .card-section {
+    max-width: 75%;
   }
 }
 
@@ -40,6 +48,14 @@ main {
 @media only screen and (min-width: 768px) {
   :root {
     --screen-width-factor: 1;
+  }
+
+  .services .card-img-container {
+    height: 100%;
+  }
+
+  .services .card-section {
+    max-width: 1400px;
   }
 }
 

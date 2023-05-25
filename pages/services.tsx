@@ -82,9 +82,7 @@ export default function Services() {
       <main className="services">
         <div>
           <div className="splash position-relative">
-            <Image src='images/mechanic_car_dark.jpg' fill alt='mechanic working on a car' />
-            
-
+            <Image src='/images/mechanic_car_dark.jpg' fill alt='mechanic working on a car' />
             <h1 className="p-5 text-center text-light">
               Repairs and Services
             </h1>
@@ -97,14 +95,14 @@ export default function Services() {
             <div className="row mx-auto justify-content-center">
               {cardInfo && cardInfo.map((info) => {
                 return (
-                  <div className="col-12 col-md-6 col-lg-4 d-flex p-4">
+                  <div className="col-12 col-lg-6 d-flex p-4" key={info.title}>
                     <div className="card mb-3 mx-auto">
                       <div className="row bg-card-blue mx-auto w-100 h-100">
-                        <div className="col-5 col-md-12 p-0 card-img-container">
-                          <Image src={info.imagePath} width={200} height={200} className="card-img-top" alt={`image of ${info.title}`} />
+                        <div className="col-12 col-md-5 p-0 card-img-container">
+                          <Image src={info.imagePath} width={200} height={200} className="card-img-top h-100" alt={`image of ${info.title}`} />
                         </div>
-                        <div className="col-7 col-md-12 h-100">
-                          <div className="card-body h-100">
+                        <div className="col-12 col-md-7 ">
+                          <div className="card-body ">
                             <h5 className="card-title">{info.title}</h5>
                             <ul className="card-text">{info.body.map((item) => {
                               return <li key={item.slice(0, 15)}>{item}</li>;

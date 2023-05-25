@@ -15,6 +15,7 @@
 .header-top {
   background-color: #303030;
   text-align: center;
+  font-size: calc(var(--screen-width-factor) * 1em);
 }
 
 .header-top a {
@@ -34,7 +35,7 @@
 }
 
 .navbar-nav .nav-item {
-  font-size: calc(var(--screen-width-factor) * 1.3em);
+  font-size: calc(var(--screen-width-factor) * 1.1em);
 }
 
 .nav-link:hover {
@@ -47,19 +48,19 @@
 }
 
 .logo img {
-  width: max(calc(var(--screen-width-factor) * 50px), 50px);
-  height: max(calc(var(--screen-width-factor) * 50px), 50px);
+  width: max(calc(var(--screen-width-factor) * 50px), 30px);
+  height: max(calc(var(--screen-width-factor) * 50px), 30px);
 }
 
 .logo .text {
   color: var(--bg-primary-color) !important;
-  font-size: max(calc(var(--screen-width-factor) * 1.3em), 1.3em);
+  font-size: calc(var(--screen-width-factor) * 1.2em);
 }
 
 .logo .text-dave {
-  font-size: max(calc(var(--screen-width-factor) * .9em), .9em);
+  font-size: calc(var(--screen-width-factor) * .8em);
 }
 
 .slide-body-navbar {
-  height: 2px;
+  height: 4px;
 }
