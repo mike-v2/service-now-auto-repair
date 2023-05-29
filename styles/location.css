@@ -1,8 +1,10 @@
-.location .splash {
-  height: 500px;
-  background-color: var(--bg-secondary-color);
-}
-
 .map-container {
   height: 800px;
+  max-width: 800px;
+  }
+  
+  .location .image-icon {
+    width: calc(var(--screen-width-factor) * 45px);
+    height: calc(var(--screen-width-factor) * 45px);
+    filter: invert(1);
 }

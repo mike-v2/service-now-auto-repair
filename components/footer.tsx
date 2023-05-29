@@ -3,66 +3,96 @@ import Image from "next/image";
 
 const phoneNumber = "(360) 882-2817";
 
+type InfoItem = {
+  src: string,
+  alt: string,
+  title: string,
+  content: React.ReactNode,
+} & (
+    | { type: 'link', href: string }
+    | { type: 'a', href: string }
+    | { type: 'span' }
+  )
+
+
+const infoList: InfoItem[] = [
+  {
+    type: 'link',
+    href: '/location',
+    src: '/images/location_icon.svg',
+    alt: 'location icon',
+    title: 'Address',
+    content: <>8206 NE 219th St<br />Battle Ground, WA 98604</>,
+  },
+  {
+    type: 'a',
+    href: `tel:${phoneNumber}`,
+    src: '/images/phone_icon.svg',
+    alt: 'phone icon',
+    title: 'Phone Number',
+    content: phoneNumber,
+  },
+  {
+    type: 'span',
+    src: '/images/clock_icon.svg',
+    alt: 'clock icon',
+    title: 'Hours',
+    content: <>Mon - Fri: 8:00 AM - 5:00 PM<br />Sat: By appointment only</>,
+  },
+]
+
+
+
 export default function Footer() {
   return (
-    <div className="footer">
-      
-      <div className="container-fluid mx-0 h-100 position-relative">
+    <section className="footer">
+      <div className="container-fluid  position-relative">
         <div className="position-absolute w-100 h-100 mx-auto my-auto top-0 bottom-0 start-0 end-0">
           <Image src='/images/car_dark_blue.png' className=" background-image d-block mx-auto" fill alt="dark blue car" />
         </div>
+        <div className="top-row d-flex flex-column flex-lg-row justify-content-between flex-nowrap mx-auto">
+          {infoList.map((item, i) => {
+            const InnerComponent = (
+              <div className="row flex-nowrap pt-4">
+                <div className="col-auto">
+                  <Image src={item.src} className="image-icon d-block mx-auto" height={50} width={50} alt={item.alt} />
+                </div>
+                <div className="col-auto row ps-3">
+                  <div className="col-auto col-lg-12 fw-bold fs-3 text-light lh-sm">
+                    {item.title}
+                  </div>
+                  <div className='col-auto col-lg-12 letter-spacing-lg lh-sm text-light text-nowrap pt-2'>
+                    {item.content}
+                  </div>
+                </div>
+              </div>
+            );
 
-        <div className="top-row d-flex flex-column flex-md-row justify-content-between flex-nowrap h-50 mx-auto">
-
-          <Link href='/location' className="py-2">
-            <div className="row">
-              <div className="col-3">
-                <Image src='/images/location_icon.svg' className="image-icon d-block mx-auto" height={50} width={50} alt="location icon" />
-              </div>
-              <div className="col-9 fw-bold footer-text-title text-light my-auto">Address</div>
-            </div>
-            <div className="row">
-              <div className="col-3"></div>
-              <div className='col-9 address footer-text-body lh-sm text-light'>
-                8206 NE 219th St<br />
-                Battle Ground, WA 98604
-              </div>
-            </div>
-            
-          </Link>
-
-          <a href={`tel:${phoneNumber}`} className="py-2">
-            <div className="row">
-              <div className="col-3">
-                <Image src='/images/phone_icon.svg' className="image-icon d-block mx-auto" height={50} width={50} alt="phone icon" />
-              </div>
-              <div className="col-9 fw-bold footer-text-title lh-1 text-light my-auto">Phone Number</div>
-            </div>
-            <div className="row">
-              <div className="col-3"></div>
-              <div className="col-9 phone-number footer-text-body text-light text-nowrap">
-                {phoneNumber}
-              </div>
-            </div>
-          </a>
-
-          <span className="py-2">
-            <div className="row">
-              <div className="col-3">
-                <Image src='/images/clock_icon.svg' className="image-icon d-block mx-auto" height={50} width={50} alt="clock icon" />
-              </div>
-              <div className="col-9 fw-bold footer-text-title text-light my-auto">Hours</div>
-            </div>
-            <div className="row">
-              <div className="col-3"></div>
-              <div className="col-9 phone-number footer-text-body lh-sm text-nowrap text-light">
-                Mon - Fri: 8:00 AM - 5:00 PM<br />
-                Sat: By appointment only
-              </div>
-            </div>
-          </span>
+            switch (item.type) {
+              case 'link':
+                return (
+                  <Link key={i} href={item.href} className="py-2 ps-2 z-front w-fit">
+                    {InnerComponent}
+                  </Link>
+                );
+              case 'a':
+                return (
+                  <a key={i} href={item.href} className="py-2 ps-2 z-front w-fit">
+                    {InnerComponent}
+                  </a>
+                );
+              case 'span':
+                return (
+                  <span key={i} className="py-2 ps-2 z-front w-fit">
+                    {InnerComponent}
+                  </span>
+                );
+              default:
+                return null;
+            }
+          })}
         </div>
-        <div className="d-flex h-50 justify-content-end align-items-end pb-3 ">
+        <div className="d-flex justify-content-end align-items-end pb-3 ">
           <div className="col-auto px-2 ">
             <Link href='https://www.facebook.com/ServiceNowAutoRepair/'>
               <Image src='/images/facebook_logo.svg' className="corp-logo" height={50} width={50} alt="clock icon" />
@@ -80,6 +110,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </div>
+    </section >
   )
 }

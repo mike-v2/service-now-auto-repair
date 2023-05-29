@@ -8,7 +8,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className='d-flex flex-column'>
+      <div className='d-flex flex-column sticky-top'>
         <div className="header-top container-fluid m-0 ">
           <div className="row flex-nowrap justify-content-center">
             <Link className="col-auto d-flex" href="/location">
@@ -16,7 +16,7 @@ export default function Navbar() {
                 <span className="center-helper"></span>
                 <Image src='/images/location_icon.svg' className='icon-image' width={30} height={30} alt="location icon" />
               </div>
-              <div className='address col-auto text-light my-auto fw-bold'>
+              <div className='letter-spacing-lg col-auto text-light my-auto fw-bold'>
                 8206 NE 219th St<br />
                 Battle Ground, WA 98604
               </div>
@@ -26,7 +26,7 @@ export default function Navbar() {
                 <span className='center-helper'></span>
                 <Image src='/images/phone_icon.svg' className='icon-image' width={30} height={30} alt="phone icon" />
               </div>
-              <div className="phone-number col-auto my-auto text-light fw-bold">
+              <div className="letter-spacing-xl col-auto my-auto text-light fw-bold">
                 {phoneNumber}
               </div>
             </a>
@@ -65,8 +65,8 @@ export default function Navbar() {
             </div>
           </div>
         </nav>
+        <div className="slide-in-left slide-body-navbar "></div>
       </div>
-      <div className="slide-in-left slide-body-navbar "></div>
     </>
   );
 };
