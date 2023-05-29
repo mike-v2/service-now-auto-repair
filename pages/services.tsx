@@ -86,13 +86,13 @@ export default function Services() {
             <h1 className="p-5 text-center text-light">
               Repairs and Services
             </h1>
-            <p className="splash-text text-center text-light px-5 pb-5 fs-5 mb-0 mx-auto">At Service Now Auto Repair, we pride ourselves on providing comprehensive automotive repair solutions for our valued customers. Our experienced technicians are equipped to handle a wide range of mechanical and electrical issues, ensuring your vehicle is in top condition. We offer competitive pricing and expert advice for all your automotive needs in the Vancouver area. Here are some of the common issues we diagnose and resolve. If you don't see your issue listed, don't hesitate to give us a call — we're here to help.</p>
+            <p className="splash-text text-center text-light px-5 pb-5 fs-5 mb-0 mx-auto" data-aos="fade-up">At Service Now Auto Repair, we pride ourselves on providing comprehensive automotive repair solutions for our valued customers. Our experienced technicians are equipped to handle a wide range of mechanical and electrical issues, ensuring your vehicle is in top condition. We offer competitive pricing and expert advice for all your automotive needs in the Vancouver area. Here are some of the common issues we diagnose and resolve. If you don't see your issue listed, don't hesitate to give us a call — we're here to help.</p>
           </div>
 
           <div className="slide-in-left slide-body ms-auto w-100"></div>
 
           <section className="card-section py-5 mx-auto">
-            <div className="row mx-auto justify-content-center">
+            <div className="row mx-auto justify-content-center" data-aos="fade-up-right">
               {cardInfo && cardInfo.map((info) => {
                 return (
                   <div className="col-12 col-lg-6 d-flex p-4" key={info.title}>
@@ -119,7 +119,7 @@ export default function Services() {
 
           <div className="slide-in-left slide-body ms-auto w-100"></div>
 
-          <p className="text-light text-center p-5 fs-5 my-0 splash-text mx-auto">
+          <p className="text-light text-center p-5 fs-5 my-0 splash-text mx-auto" data-aos="fade-up">
             We use only the highest quality parts and equipment for our repairs and services, and our technicians are trained and certified to handle any issue you may have. Don't hesitate to give us a call or stop by our shop to see how we can help you get back on the road safely and confidently.
           </p>
         </div>

@@ -10,6 +10,8 @@ import { useEffect } from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import {Montserrat, PT_Sans} from '@next/font/google'
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also load CSS styles through a link in your HTML
 
 
 const ptSans = PT_Sans({
@@ -24,6 +26,11 @@ const montserrat = Montserrat({
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     require('bootstrap/dist/js/bootstrap');
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+    });
   }, [])
   
   return (

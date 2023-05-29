@@ -71,6 +71,13 @@ main {
   :root {
     --screen-width-factor: 1.3;
   }
+.splash-text-top {
+  color: black;
+  -webkit-text-fill-color: black;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: white;
+}
 }
 
 /* ----------------------------------------------

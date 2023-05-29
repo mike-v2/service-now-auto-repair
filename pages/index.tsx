@@ -130,37 +130,39 @@ export default function Home() {
       </Head>
       <main className='home'>
         <section className='splash-section '>
-          <div className='dave-image-container position-relative h-100 ms-auto my-auto'>
+          <div className='dave-image-container position-relative h-100 ms-auto my-auto' data-aos="fade-left">
             <Image src='/images/dave.png' className='dave-image' fill alt='dave' />
           </div>
           <div className="splash-text-top container-fluid fw-bold">
-            <div className="row">
+            <div className="row" data-aos="fade-down">
               <div className="col-2 d-flex justify-content-end p-0">
                 <Image src='/images/engine_light_orange.svg' width={150} height={150} alt='engine light icon'/>
               </div>
-              <div className="col-10 text">
-                Service Now Auto Repair
+              <div className="col-10 text d-flex flex-wrap">
+                <span>
+                  {`Service Now `}
+                </span>
+                <span>
+                  Auto Repair
+                </span>
               </div>
             </div>
           </div>
-          <div className="splash-text-bottom">
+          <div className="splash-text-bottom" data-aos="fade-up">
             <span className='text'>Quick</span><span>. </span>
             <span className='text'>Affordable</span><span>. </span>
             <span className='text'>Reliable</span><span>.</span>
           </div>
         </section>
-
         <div className="buffer"></div>
-
         <div className="slide-in-left slide-body ms-auto w-100"></div>
-
         <section className="card-section mx-auto">
           <p className='card-section-header text-light'>We service any make and model.<br/>There's no project that's too big or too small for us.</p>
           <div className="row g-5 mx-auto justify-content-center">
             {cardInfo && cardInfo.map((info) => {
               return (
                 <div className="col-12 col-md-6 col-lg-4 d-flex" key={info.title}>
-                  <div className="card">
+                  <div className="card" data-aos="fade-up-right" >
                     <Image className="card-img-top" src={info.imagePath} width={200} height={200} alt="Engine" />
                     <div className="card-body text-center bg-card-blue d-flex flex-column">
                       <h4 className="card-title">{info.title}</h4>
@@ -173,10 +175,9 @@ export default function Home() {
             })}
           </div>
         </section>
-
         <section className="review-sectioncontainer-fluid">
           <div className="row">
-            <div className="review-image-parent col-12 col-lg-6">
+            <div className="review-image-parent col-12 col-lg-6" data-aos="fade-right">
               <Image className='review-image' src={`/images/service_now_1.jpg`} fill alt="mechanic in an ice cream truck" />
             </div>
             <div className="review-item-parent col-12 col-lg-6 text-light">
@@ -186,7 +187,7 @@ export default function Home() {
               </div>
               {reviewData && reviewData.map((review) => {
                 return (
-                  <div className="row review-item px-2 my-auto justify-content-end" key={review.name}>
+                  <div className="row review-item px-2 my-auto justify-content-end" data-aos="fade-left" key={review.name}>
                     <div className="col my-auto p-0">
                       <Link href={review.url}>
                         <Image src={review.logoPath} width={130} height={40} alt={`${review.name} logo`} className='d-block mx-auto' />
@@ -218,7 +219,7 @@ export default function Home() {
         <div className="buffer"></div>
 
         <section className='quote-section '>
-          <div className="figure-container p-3 w-75 mx-auto">
+          <div className="figure-container p-3 w-75 mx-auto" data-aos="fade-up-left">
             <figure className='p-3 m-0'>
               <blockquote className="blockquote text-light">
                 <div className='position-relative'>

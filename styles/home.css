@@ -29,14 +29,12 @@
   font-size: calc(var(--screen-width-factor) * 3.1em);
   font-weight: 200;
   color: black;
-  -webkit-text-fill-color: black; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: white;
 }
 
 .splash-text-top .text {
   margin: auto 0;
   padding-left: 2%;
+  white-space: pre-wrap;
 }
 
 .splash-text-bottom {
