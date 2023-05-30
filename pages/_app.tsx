@@ -15,7 +15,7 @@ import 'aos/dist/aos.css'; // You can also load CSS styles through a link in you
 
 
 const ptSans = PT_Sans({
-  weight: '400',
+  weight: ['400', '700'],
   subsets: ['latin'],
 })
 

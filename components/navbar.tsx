@@ -9,12 +9,12 @@ export default function Navbar() {
       <div className='d-flex flex-column sticky-top'>
         <div className="header-top container-fluid m-0 ">
           <div className="row flex-nowrap justify-content-center">
-            <Link className="col-auto d-flex" href="/location">
+            <Link className="col-auto d-flex " href="/location">
               <div className='pe-2'>
                 <span className="center-helper"></span>
                 <Image src='/images/location_icon.svg' className='icon-image' width={30} height={30} alt="location icon" />
               </div>
-              <div className='letter-spacing-lg col-auto text-light my-auto fw-bold'>
+              <div className='letter-spacing-lg col-auto text-light my-auto fw-bold link-style'>
                 8206 NE 219th St<br />
                 Battle Ground, WA 98604
               </div>

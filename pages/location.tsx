@@ -10,7 +10,7 @@ export default function Location() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main className="location">
-        <div className="text-white text-center fs-1 px-3 pt-5">
+        <div className="text-white text-center fs-1 px-3 pt-5 fw-bold">
           Location
         </div>
         <div className="row m-0">

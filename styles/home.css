@@ -1,10 +1,11 @@
 .splash-section {
   position: relative;
-  background: url('/images/storefront.jpg') no-repeat center center;
-  background-size: cover;
   height: 700px;
 }
 
+.splash-image {
+  object-fit: cover;
+}
 .dave-image-container {
   width: calc(var(--screen-width-factor) * 500px);
   height: calc(var(--screen-width-factor) * 500px);
@@ -22,7 +23,8 @@
 .splash-text-top {
   position: absolute;
   top: 0px;
-  left: 2%;
+  left: 0px;
+    /* 2%; */
   width: fit-content;
   padding-left: max(50px, 5%);
   padding-top: max(50px, 5%);

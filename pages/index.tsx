@@ -130,7 +130,10 @@ export default function Home() {
       </Head>
       <main className='home'>
         <section className='splash-section '>
-          <div className='dave-image-container position-relative h-100 ms-auto my-auto' data-aos="fade-left">
+          <div className='splash-image-container position-absolute w-100 h-100'>
+            <Image src='/images/storefront.jpg' className='splash-image  w-100 h-100' width={2048} height={810} alt='photo of storefront' />
+          </div>
+          <div className='dave-image-container position-absolute end-0 h-100 ms-auto' data-aos="fade-left">
             <Image src='/images/dave.png' className='dave-image' fill alt='dave' />
           </div>
           <div className="splash-text-top container-fluid fw-bold">
@@ -176,7 +179,7 @@ export default function Home() {
           </div>
         </section>
         <section className="review-sectioncontainer-fluid">
-          <div className="row">
+          <div className="row mx-0">
             <div className="review-image-parent col-12 col-lg-6" data-aos="fade-right">
               <Image className='review-image' src={`/images/service_now_1.jpg`} fill alt="mechanic in an ice cream truck" />
             </div>
