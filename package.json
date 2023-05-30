@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@types/aos": "^3.0.4",
+    "@types/bootstrap": "^5.2.6",
     "@types/google.maps": "^3.52.4"
   },
   "proxy": "http://localhost:4000"

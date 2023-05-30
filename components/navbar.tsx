@@ -1,11 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import React, { useRef, useEffect } from 'react';
 
 const phoneNumber = "(360) 882-2817";
 
 export default function Navbar() {
-
   return (
     <>
       <div className='d-flex flex-column sticky-top'>
@@ -47,19 +45,31 @@ export default function Navbar() {
                 <div className='text-dave text-end text-light'>Dave Freitas</div>
               </span>
             </Link>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse justify-content-end pt-3" id="navbarSupportedContent">
               <ul className="navbar-nav px-3 text-end">
-                <li className="nav-item px-1 px-lg-2">
-                  <Link href='/' className="nav-link fw-bold" aria-current>Home</Link>
+                <li className="nav-item px-1 px-lg-2 ms-auto">
+                  <Link href='/' className="nav-link fw-bold">
+                    <span className='py-2' data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                      Home
+                    </span>
+                  </Link>
                 </li>
-                <li className="nav-item px-1 px-lg-2">
-                  <Link href='/services' className='nav-link fw-bold'>Services</Link>
+                <li className="nav-item px-1 px-lg-2 ms-auto">
+                  <Link href='/services' className='nav-link fw-bold' >
+                    <span className='py-2' data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                      Services
+                    </span>
+                  </Link>
                 </li>
-                <li className="nav-item px-1 px-lg-2">
-                  <Link href='/location' className='nav-link fw-bold'>Location</Link>
+                <li className="nav-item px-1 px-lg-2 ms-auto">
+                  <Link href='/location' className='nav-link fw-bold'>
+                    <span className='py-2' data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                      Location
+                    </span>
+                  </Link>
                 </li>
               </ul>
             </div>

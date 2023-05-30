@@ -61,7 +61,7 @@ export default function Footer() {
                   <div className="col-auto col-lg-12 fw-bold fs-3 text-light lh-sm">
                     {item.title}
                   </div>
-                  <div className='col-auto col-lg-12 letter-spacing-lg lh-sm text-light text-nowrap pt-2'>
+                  <div className='col-auto col-lg-12 letter-spacing-lg lh-sm text-light text-nowrap pt-1'>
                     {item.content}
                   </div>
                 </div>

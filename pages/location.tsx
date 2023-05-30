@@ -13,7 +13,7 @@ export default function Location() {
         <div className="text-white text-center fs-1 px-3 pt-5">
           Location
         </div>
-        <div className="row">
+        <div className="row m-0">
           <div className="col-12 col-xl-2 mx-auto row justify-content-center h-fit flex-wrap pt-4 ps-5" data-aos="fade-right">
             <div className="col-12 col-md-4 col-xl-12 d-flex pt-5">
               <div className="flex-shrink-1">
@@ -47,7 +47,6 @@ export default function Location() {
           <div className="col-12 col-xl-auto pt-4" data-aos="fade-left">
             <div className="map-container mx-auto">
               <Map />
-
             </div>
           </div>
         </div>
