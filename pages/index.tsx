@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
 import { LoadGoogleMapsAPI } from '../utils/loadGoogleMapsAPI';
 import Link from 'next/link';
 
@@ -100,20 +99,22 @@ export default function Home() {
   
   async function fetchYelpScore() {
     try {
-      const response = await axios.get('/api/yelp')
-      //console.log(response.data);
+      const response = await fetch('/api/yelp')
+      const data = await response.json();
 
-      setReviewData(prevState => {
-        const newState = [...prevState];
-        const index = newState.findIndex(x => x.name === 'Yelp');
+      if (data) {
+        setReviewData(prevState => {
+          const newState = [...prevState];
+          const index = newState.findIndex(x => x.name === 'Yelp');
 
-        if (index > -1) {
-          newState[index].rating = response.data.rating as number;
-          newState[index].numReviews = response.data.review_count as number;
-        }
+          if (index > -1) {
+            newState[index].rating = data.rating as number;
+            newState[index].numReviews = data.review_count as number;
+          }
 
-        return newState;
-      });
+          return newState;
+        });
+      }
     } catch (error) {
       console.error('Error fetching review score:', error);
       throw error;
