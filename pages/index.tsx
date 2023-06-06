@@ -96,7 +96,6 @@ export default function Home() {
     }
   };
 
-  
   async function fetchYelpScore() {
     try {
       const response = await fetch('/api/yelp')
