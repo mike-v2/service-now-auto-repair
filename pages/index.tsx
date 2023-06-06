@@ -159,12 +159,12 @@ export default function Home() {
         </section>
         <div className="buffer"></div>
         <div className="slide-in-left slide-body ms-auto w-100"></div>
-        <section className="card-section mx-auto">
+        <section className="card-section">
           <p className='card-section-header text-light'>We service any make and model.<br/>There's no project that's too big or too small for us.</p>
-          <div className="row g-5 mx-auto justify-content-center">
+          <div className="row gy-5 mx-auto justify-content-center w-100">
             {cardInfo && cardInfo.map((info) => {
               return (
-                <div className="col-12 col-md-6 col-lg-4 d-flex" key={info.title}>
+                <div className="col-12 col-md-5 col-lg-3 d-flex p-0 mx-auto" key={info.title}>
                   <div className="card" data-aos="fade-up-right" >
                     <Image className="card-img-top" src={info.imagePath} width={200} height={200} alt="Engine" />
                     <div className="card-body text-center bg-card-blue d-flex flex-column">
@@ -200,11 +200,18 @@ export default function Home() {
                       {review.rating}
                     </div>
                     <div className="col-auto my-auto d-flex justify-content-center">
-                      <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
-                      <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
-                      <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
-                      <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
-                      <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
+                      {review.name === 'Yelp' &&
+                        <Image src='/images/yelp_stars/stars_regular_5.png' className='img-fluid' width={150} height={30} alt='yelp stars' />
+                      }
+                      {review.name !== 'Yelp' &&
+                        <div>
+                          <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
+                          <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
+                          <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
+                          <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
+                          <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
+                        </div>
+                      }
                     </div>
                     <div className="col-auto my-auto ">
                       <Link href={review.url} className='link underline text-light'>
