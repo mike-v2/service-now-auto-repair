@@ -82,11 +82,19 @@ export default function Services() {
       <main className="services">
         <div>
           <div className="splash position-relative">
-            <Image src='/images/mechanic_car_dark.jpg' fill alt='mechanic working on a car' />
+            <Image src='/images/mechanic_car_dark.jpg' className="splash-image" fill alt='mechanic working on a car' />
             <h1 className="p-5 text-center text-light fw-bold">
               Repairs and Services
             </h1>
-            <p className="splash-text text-center text-light px-5 pb-5 fs-5 mb-0 mx-auto" data-aos="fade-up">At Service Now Auto Repair, we pride ourselves on providing comprehensive automotive repair solutions for our valued customers. Our experienced technicians are equipped to handle a wide range of mechanical and electrical issues, ensuring your vehicle is in top condition. We offer competitive pricing and expert advice for all your automotive needs in the Vancouver area. Here are some of the common issues we diagnose and resolve. If you don't see your issue listed, don't hesitate to give us a call — we're here to help.</p>
+            <div className="row justify-content-center">
+              <div className="title-icon-container col-12 col-md-3 col-lg-2 position-relative p-0">
+                <Image src='/images/dashboard_icons.png' className="brake-warning-icon px-4 pb-4" fill alt='brake warning icon' />
+              </div>
+              <p className="col-12 col-md-9 col-lg-5 splash-text text-center text-light px-4 pb-5 fs-5 mb-0" data-aos="fade-up">
+                At Service Now Auto Repair, we pride ourselves on providing comprehensive automotive repair solutions for our valued customers. We offer competitive pricing and expert advice for all your automotive needs in the Vancouver area. Here are some of the common issues we diagnose and resolve. If you don't see your issue listed, don't hesitate to give us a call — we're here to help.
+              </p>
+            </div>
+
           </div>
 
           <div className="slide-in-left slide-body ms-auto w-100"></div>

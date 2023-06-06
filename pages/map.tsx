@@ -1,6 +1,6 @@
 import { GoogleMap, MarkerF } from '@react-google-maps/api';
 import { useEffect, useMemo, useState } from 'react';
-import { LoadGoogleMapsAPI } from './utils/loadGoogleMapsAPI';
+import { LoadGoogleMapsAPI } from '../utils/loadGoogleMapsAPI';
 
 
 const placeID = "ChIJm-qmpFWulVQRcuV5L0tJ_sY"; // "ChIJkYbgmm6zlVQRzBHMxuWNU98";

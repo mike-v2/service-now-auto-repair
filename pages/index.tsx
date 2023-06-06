@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import { LoadGoogleMapsAPI } from './utils/loadGoogleMapsAPI';
+import { LoadGoogleMapsAPI } from '../utils/loadGoogleMapsAPI';
 import Link from 'next/link';
 
 const cardInfo = [
@@ -178,36 +178,36 @@ export default function Home() {
             })}
           </div>
         </section>
-        <section className="review-sectioncontainer-fluid">
-          <div className="row mx-0">
+        <section className="review-section container-fluid">
+          <div className="row">
             <div className="review-image-parent col-12 col-lg-6" data-aos="fade-right">
               <Image className='review-image' src={`/images/service_now_1.jpg`} fill alt="mechanic in an ice cream truck" />
             </div>
-            <div className="review-item-parent col-12 col-lg-6 text-light">
-              <div className="row review-title">
+            <div className="col-12 col-md-10 col-lg-6 h-fit text-light mx-auto">
+              <div className="row review-title px-2 py-3">
                 <h1 className="highlighted-text col-6 display-1 text-center fw-bold my-auto text-decoration-underline"><em>15+ years</em></h1>
-                <h4 className="col-6 text-center my-auto">as a community-trusted small business</h4>
+                <h4 className="col-6 text-center my-auto" >as a community-trusted small business</h4>
               </div>
               {reviewData && reviewData.map((review) => {
                 return (
-                  <div className="row review-item px-2 my-auto justify-content-end" data-aos="fade-left" key={review.name}>
-                    <div className="col my-auto p-0">
+                  <div className="row review-item py-4 my-auto mx-auto justify-content-between" data-aos="fade-left" key={review.name}>
+                    <div className="col-auto my-auto p-0">
                       <Link href={review.url}>
                         <Image src={review.logoPath} width={130} height={40} alt={`${review.name} logo`} className='d-block mx-auto' />
                       </Link>
                     </div>
-                    <h3 className="col my-auto fw-bold text-center">
+                    <div className="col-auto shrink-1 fs-2 fw-bold text-center p-0 m-0">
                       {review.rating}
-                    </h3>
-                    <div className="col my-auto d-flex justify-content-center">
+                    </div>
+                    <div className="col-auto my-auto d-flex justify-content-center">
                       <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
                       <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
                       <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
                       <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
                       <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
                     </div>
-                    <div className="col my-auto">
-                      <Link href={review.url} className='review-count text-light'>
+                    <div className="col-auto my-auto ">
+                      <Link href={review.url} className='link underline text-light'>
                         {`(${review.numReviews} reviews)`}
                       </Link>
                     </div>
@@ -222,19 +222,22 @@ export default function Home() {
         <div className="buffer"></div>
 
         <section className='quote-section '>
-          <div className="figure-container p-3 w-75 mx-auto" data-aos="fade-up-left">
-            <figure className='p-3 m-0'>
-              <blockquote className="blockquote text-light">
-                <div className='position-relative'>
-                  <span className='quote-symbol position-absolute'>❝</span>
-                </div>
-                <p className='fs-6 pt-2'>Dave is the very best! We took our Honda Fit in to have the air conditioner fixed in preparation for a road trip. Dave not only worked on the air conditioner but, hearing that we had a trip coming up, took care to check the pressure of the spare tire, make sure that we had a tire iron and jack with it, clean the headlights, and more. He provided excellent and very careful service at an excellent price, as always!</p>
-              </blockquote>
-              <figcaption className="blockquote-footer text-light pt-4 text-end me-5 mb-0">
-                Mary Wasnock
-              </figcaption>
-            </figure>
+          <div className='row'>
+            <div className="figure-container col-12 col-md-10 col-lg-6 mx-auto p-3 " data-aos="fade-up-left">
+              <figure className='p-3 m-0'>
+                <blockquote className="blockquote text-light">
+                  <div className='position-relative'>
+                    <span className='quote-symbol position-absolute'>❝</span>
+                  </div>
+                  <p className='fs-6 p-3 pt-5'>Dave is the very best! We took our Honda Fit in to have the air conditioner fixed in preparation for a road trip. Dave not only worked on the air conditioner but, hearing that we had a trip coming up, took care to check the pressure of the spare tire, make sure that we had a tire iron and jack with it, clean the headlights, and more. He provided excellent and very careful service at an excellent price, as always!</p>
+                </blockquote>
+                <figcaption className="blockquote-footer text-light pt-4 text-end me-5 mb-0">
+                  <Link href='https://g.co/kgs/vGTJGw' className='link underline'>Mary Wasnock</Link>
+                </figcaption>
+              </figure>
+            </div>
           </div>
+
         </section>
 
         <div className="buffer"></div>

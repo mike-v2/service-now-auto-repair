@@ -2,15 +2,23 @@
   background-color: var(--bg-secondary-color);
 }
 
-.services .splash img {
+.services .splash-image {
   filter: opacity(.1);
   object-fit: cover;
 }
 
+.services .title-icon-container {
+  min-height: 150px;
+}
 .services .splash-text {
   max-width: 1000px;
 }
 
 .card-img-container {
   height: fit-content;
+}
+.brake-warning-icon {
+  /* filter: invert(35%) sepia(29%) saturate(5934%) hue-rotate(13deg) brightness(99%) contrast(97%); */
+  object-fit: contain;
+  object-position: center top;
 }

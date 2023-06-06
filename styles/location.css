@@ -9,3 +9,6 @@
   height: calc(var(--screen-width-factor) * 45px);
   filter: invert(1);
 }
+.location .info-box {
+  border: solid var(--bg-primary-color) 2px;
+}
