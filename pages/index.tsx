@@ -120,6 +120,52 @@ export default function Home() {
     }
   }
 
+  function getYelpStarsImage(rating: number) {
+    const imgSrcBase = '/images/yelp_stars/'
+    const imgSrcEnd = rating >= 4.75 ?
+      'stars_regular_5.png' :
+      rating >= 4.25 ?
+        'stars_regular_4_half.png' :
+        rating >= 3.75 ?
+          'stars_regular_4.png' :
+          rating >= 3.25 ?
+            'stars_regular_3_half.png' :
+            rating >= 2.75 ?
+              'stars_regular_3.png' :
+              rating >= 2.25 ?
+                'stars_regular_2_half.png' :
+                rating >= 1.75 ?
+                  'stars_regular_2.png' :
+                  rating >= 1.25 ?
+                    'stars_regular_1_half.png' :
+                    rating >= .75 ?
+                      'stars_regular_1.png' :
+                      'stars_regular_0.png';
+
+    return (
+      <Image src={imgSrcBase + imgSrcEnd} className='img-fluid' width={150} height={30} alt='yelp stars' />
+    )
+  }
+
+  function getNonYelpStarsImage(rating: number) {
+    const roundedRating = Math.round(rating);
+    const stars = [...Array(roundedRating)].map((_, i) =>
+      <Image
+        key={i}
+        src={`/images/gold_star.svg`}
+        width={30}
+        height={30}
+        alt="gold star"
+      />
+    );
+
+    return (
+      <div>
+        {stars}
+      </div>
+    );
+  }
+
   return (
     <>
       <Head>
@@ -200,18 +246,8 @@ export default function Home() {
                       {review.rating}
                     </div>
                     <div className="col-auto my-auto d-flex justify-content-center">
-                      {review.name === 'Yelp' &&
-                        <Image src='/images/yelp_stars/stars_regular_5.png' className='img-fluid' width={150} height={30} alt='yelp stars' />
-                      }
-                      {review.name !== 'Yelp' &&
-                        <div>
-                          <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
-                          <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
-                          <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
-                          <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
-                          <Image src={`/images/gold_star.svg`} width={30} height={30} alt="gold star" />
-                        </div>
-                      }
+                      {review.name === 'Yelp' && getYelpStarsImage(review.rating)}
+                      {review.name !== 'Yelp' && getNonYelpStarsImage(review.rating)}
                     </div>
                     <div className="col-auto my-auto ">
                       <Link href={review.url} className='link underline text-light'>
